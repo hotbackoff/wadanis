@@ -1,0 +1,2 @@
+# wadanis
+static pages
